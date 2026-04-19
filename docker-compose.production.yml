@@ -1,6 +1,7 @@
 version: '3.3'
 
 services:
+  
   db:
     image: postgres:13
     container_name: postgres
@@ -15,16 +16,15 @@ services:
     depends_on:
       - db
     volumes:
-      - static:/app/static/
+      - static:/app/collected_static/
       - media:/app/media/
 
   frontend:
     image: konyakhinaaleksandra/kittygram_frontend
     container_name: frontend
-    depends_on:
-      - backend
     volumes:
-      - static:/app/result_build/build/
+      - static:/staticfiles/
+    command: sh -c "cp -r /app/result_build/build/. /staticfiles/"
 
   gateway:
     image: konyakhinaaleksandra/kittygram_gateway
