@@ -24,7 +24,7 @@ services:
     container_name: frontend
     volumes:
       - static:/staticfiles/
-    command: sh -c "cp -r /app/result_build/build/. /staticfiles/"
+    command: sh -c "cp -r /app/build/. /staticfiles/"
 
   gateway:
     image: konyakhinaaleksandra/kittygram_gateway
